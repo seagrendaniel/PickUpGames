@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>My P.U.G's</h2>
+
+<ul>
+    <li>Name: {{  user.get_full_name }}</li>
+    <li>Position: {{ user.profile.first_name }}</li>
+    <li>Height: {{ user.profile.height }}</li>
+    <li>Location: {{ user.profile.location }}</li>
+</ul>
+
+
+
+
+
+{% endblock %}
