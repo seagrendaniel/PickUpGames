@@ -13,7 +13,8 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
-
+def profile_show(request):
+  return render(request, 'profile.html')
 
 def signup(request):
   error_message = ''
@@ -23,7 +24,7 @@ def signup(request):
       user = form.save()
       # This is how we login in programatically
       login(request, user)
-      return redirect('index')
+      return redirect('/profile/')
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request
