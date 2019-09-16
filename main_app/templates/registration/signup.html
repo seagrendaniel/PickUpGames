@@ -7,7 +7,9 @@
 <!-- <div class="browser-default"> -->
 <form method="post" action="{% url 'signup' %}" >
   {% csrf_token %}
-  {{ form.as_p }}
+  {{form.as_p}}
+  {{profile_form.as_p}}
+
   <input type="submit" class="btn" value="signup">
 </form>
 <!-- </div> -->
