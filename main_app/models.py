@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .forms import SignupForm
@@ -37,3 +38,7 @@ class Game(models.Model):
     date = models.DateField()
     time = models.TimeField()
     count = models.IntegerField()
+
+    class Meta:
+        ordering = ['-date']
+
