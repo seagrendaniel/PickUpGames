@@ -40,8 +40,16 @@ def signup(request):
 
   return render(request, 'registration/signup.html', context)
 
+class GameCreate(LoginRequiredMixin, CreateView):
+  model = Game
+  fields = ['location', 'date', 'time']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 @login_required
-def games_index(request):
+def mygames_index(request):
     games = Game.objects.filter(user=request.user)
     return render(request, 'games/index.html', {'games': games})
 
@@ -50,7 +58,7 @@ def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
   game_doesnt_have = Game.objects.exclude(id__in = game.all().values_list('id'))
   return render(request, 'games/detail.html', {
-    'game': game, 
+    'game': game,
     'games': game_doesnt_have
   })
   
@@ -69,4 +77,3 @@ class GameUpdate(LoginRequiredMixin, UpdateView):
 class GameDelete(LoginRequiredMixin, DeleteView):
   model = Game
   success_url = '/games/'
-
