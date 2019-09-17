@@ -3,10 +3,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignupForm
+from .forms import SignupForm, NewGameForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-# Create your views here.
 from .models import Game
 
 def home(request):
@@ -42,38 +41,25 @@ def signup(request):
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
-  fields = ['location', 'date', 'time']
+  fields = ['park', 'date', 'time']
 
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-@login_required
-def mygames_index(request):
-    games = Game.objects.filter(user=request.user)
-    return render(request, 'games/index.html', {'games': games})
-
-@login_required
-def games_detail(request, game_id):
-  game = Game.objects.get(id=game_id)
-  game_doesnt_have = Game.objects.exclude(id__in = game.all().values_list('id'))
-  return render(request, 'games/detail.html', {
-    'game': game,
-    'games': game_doesnt_have
-  })
-  
-
-class GameList(LoginRequiredMixin, ListView):
-  model = Game
-
-class GameDetail(LoginRequiredMixin, DetailView):
-  model = Game
-
-
 class GameUpdate(LoginRequiredMixin, UpdateView):
   model = Game
-  fields = '__all__'
+  fields = ['date', 'time']
 
 class GameDelete(LoginRequiredMixin, DeleteView):
   model = Game
   success_url = '/games/'
+
+@login_required
+def games_index(request):
+  return render(request, 'games/index.html', { 'games': games })
+
+@login_required
+def games_detail(request, game_id):
+  game = Game.objects.get(id=game_id)
+  return render(request, 'games/details.html', { 'game': game })

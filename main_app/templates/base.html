@@ -23,10 +23,10 @@
                 <form>
                     <ul class="right">
    
-                        <li><a href="{% url 'about' %}">About!</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                         {% if user.is_authenticated %}
                         <li>&nbsp;&nbsp;P.U.G's</li>
-                        <li><a href="{% url 'games_index' %}"></a>Games</li>
+                        <li><a href="{% url 'games_index' %}">Games</a></li>
                         <li>Players</li>
                         <li><a href="{% url 'logout' %}"> Log Out</a></li>
                         {% else %}
