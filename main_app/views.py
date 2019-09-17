@@ -24,17 +24,20 @@ def signup(request):
     form = SignupForm(request.POST)
     if form.is_valid():
       user = form.save()
-      # This is how we login in programatically
+      user.profile.position = form.data['position']
+      user.profile.height = form.data['height']
+      user.profile.location = form.data['location']
+      user.profile.homecourt = form.data['homecourt']
       login(request, user)
       return redirect('/profile/')
     else:
       error_message = 'Invalid sign up - try again'
-  # A bad POST or a GET request
   form = SignupForm()
   context = {
     'form': form,
     'error_message': error_message
   }
+
   return render(request, 'registration/signup.html', context)
 
 @login_required
@@ -66,3 +69,4 @@ class GameUpdate(LoginRequiredMixin, UpdateView):
 class GameDelete(LoginRequiredMixin, DeleteView):
   model = Game
   success_url = '/games/'
+
