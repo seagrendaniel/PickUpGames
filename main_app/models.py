@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 # Create your models here.
 class Profile(models.Model):
@@ -21,3 +22,6 @@ class Game(models.Model):
     date = models.DateField()
     time = models.TimeField()
     count = models.IntegerField()
+
+    class Meta:
+        ordering = ['-date']
