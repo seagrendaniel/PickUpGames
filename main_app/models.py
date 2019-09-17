@@ -10,8 +10,9 @@ class Park(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     courts = models.IntegerField()
-    space = models.CharField(max_length=100)
     schedule = models.CharField(max_length=250)
+    lat = models.DecimalField(max_digits=11, decimal_places=8)
+    long = models.DecimalField(max_digits=11, decimal_places=8)
 
 class Game(models.Model):
     park = models.ForeignKey(Park, on_delete=models.CASCADE)
