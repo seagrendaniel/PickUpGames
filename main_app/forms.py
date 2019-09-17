@@ -20,9 +20,11 @@ class SignupForm(UserCreationForm):
     location = forms.CharField(max_length=50, required=True, widget=forms.TextInput (attrs={'placeholder':'Los Angeles'}))
     homecourt = forms.CharField(max_length=50, required=False, widget=forms.TextInput (attrs={'placeholder':'Staples Center'}))
 
-    
-
-
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'position', 'height', 'location', 'homecourt', 'password1', 'password2')
+
+class NewGameForm(forms.ModelForm):
+    location = forms.CharField(max_length=100)
+    date = forms.DateField()
+    time = forms.TimeInput()
