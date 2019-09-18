@@ -18,15 +18,11 @@ class Migration(migrations.Migration):
             name='Game',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('park', models.CharField(max_length=100)),
                 ('date', models.DateField()),
                 ('time', models.TimeField()),
                 ('count', models.IntegerField()),
                 ('game', models.CharField(max_length=100)),
             ],
-            options={
-                'ordering': ['-date'],
-            },
         ),
         migrations.CreateModel(
             name='Park',
@@ -53,6 +49,7 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
+
         migrations.CreateModel(
             name='Photo',
             fields=[
@@ -60,5 +57,10 @@ class Migration(migrations.Migration):
                 ('url', models.CharField(max_length=200)),
                 ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.Profile')),
             ],
+
+        migrations.AddField(
+            model_name='game',
+            name='park',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.Park'),
         ),
     ]
