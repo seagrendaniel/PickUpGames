@@ -1,7 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-# from .models import Profile
+from .models import Game
 
 
 positions = [
@@ -25,6 +26,7 @@ class SignupForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'position', 'height', 'location', 'homecourt', 'password1', 'password2')
 
 class NewGameForm(forms.ModelForm):
-    location = forms.CharField(max_length=100)
-    date = forms.DateField()
-    time = forms.TimeInput()
+
+    class Meta:
+        model = Game
+        fields = ('park', 'date', 'time')

@@ -66,6 +66,7 @@ def add_game(request, park_id):
   if form.is_valid():
     new_game = form.save(commit=False)
     new_game.park_id = park_id
+    print(new_game)
     new_game.save()
   return redirect('parks_detail', park_id = park_id)
 

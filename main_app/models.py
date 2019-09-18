@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .forms import SignupForm, NewGameForm
@@ -28,10 +29,8 @@ class Game(models.Model):
         return self.park
 
     def get_absolute_url(self):
-        return reverse('games_detail', kwargs={'pk': self.id})
+        return reverse('games_detail', kwargs={'int': self.id})
 
-    class Meta:
-        ordering = ['-date']
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

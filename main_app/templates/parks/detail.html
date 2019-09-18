@@ -7,6 +7,6 @@
 
 {% easy_map park.address 300 400 %}
 
-<button><a href="{% url 'games_create' %}">Add A Game</a></button>
+<button><a href="{% url 'add_game' park.id %}">Add A Game</a></button>
 
 {% endblock %}

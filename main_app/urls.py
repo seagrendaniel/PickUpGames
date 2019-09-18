@@ -11,7 +11,7 @@ path('parks/', views.parks_index, name='parks_index'),
 path('parks/<int:park_id>/', views.parks_detail, name='parks_detail'),
 path('games/', views.games_index, name='games_index'),
 path('parks/<int:park_id>/games/<int:game_id>/', views.games_detail, name='games_detail'),
-path('parks/<int:park_id>/create_game/', views.GameCreate.as_view(), name='games_create'),
+path('parks/<int:park_id>/add_game/', views.add_game, name='add_game'),
 path('games/<int:pk>/update', views.GameUpdate.as_view(), name='games_update'),
 path('games/<int:pk>/delete', views.GameDelete.as_view(), name='games_delete'),
 ]
