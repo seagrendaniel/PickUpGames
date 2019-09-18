@@ -4,7 +4,6 @@ from datetime import date
 from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .forms import SignupForm, NewGameForm
 
 # Create your models here.
 class Park(models.Model):
@@ -19,14 +18,17 @@ class Park(models.Model):
     def __str__(self):
         return self.name
 
+        def games_planned(self):
+            return self.game_set.all()
+
 class Game(models.Model):
     park = models.ForeignKey(Park, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
     count = models.IntegerField()
     
-    def __str__(self):
-        return self.park
+    # def __str__(self):
+    #     return self.park
 
     def get_absolute_url(self):
         return reverse('games_detail', kwargs={'int': self.id})

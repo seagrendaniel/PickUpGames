@@ -58,7 +58,8 @@ def parks_index(request):
 @login_required
 def parks_detail(request, park_id):
   park = Park.objects.get(id=park_id)
-  return render(request, 'parks/detail.html', {'park': park})
+  new_game_form = NewGameForm()
+  return render(request, 'parks/detail.html', {'park': park, 'new_game_form': new_game_form})
 
 @login_required
 def add_game(request, park_id):
