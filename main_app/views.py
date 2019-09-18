@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -58,7 +59,8 @@ def parks_index(request):
 @login_required
 def parks_detail(request, park_id):
   park = Park.objects.get(id=park_id)
-  return render(request, 'parks/detail.html', {'park': park})
+  key = os.environ['EASY_MAPS_GOOGLE_KEY']
+  return render(request, 'parks/detail.html', {'park': park, 'key': key})
 
 
 class GameCreate(LoginRequiredMixin, CreateView):
