@@ -14,5 +14,6 @@ path('parks/<int:park_id>/games/<int:game_id>/', views.games_detail, name='games
 path('parks/<int:park_id>/add_game/', views.add_game, name='add_game'),
 path('games/<int:pk>/update', views.GameUpdate.as_view(), name='games_update'),
 path('games/<int:pk>/delete', views.GameDelete.as_view(), name='games_delete'),
-path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
+path('profile/<int:profile_id>/add_photo/', views.add_photo, name='add_photo'),
+path('photos/<int:pk>/delete', views.PhotoDelete.as_view(), name='delete_photo'),
 ]

@@ -107,16 +107,22 @@ def games_detail(request, game_id):
 
   return render(request, 'games/details.html', { 'game': game })
 
-def add_photo(request, game_id):
+@login_required
+def add_photo(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
-            url = f"{S3_BASE_URL}{BUCKET}/{key}"            
-            photo = Photo(url=url, game_id=game_id)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"   
+            # print(url)         
+            photo = Photo(url=url, profile_id=profile_id)
             photo.save()
         except:
             print('An error occurred uploading file to S3')
-    return redirect('detail', game_id=game_id) 
+    return redirect('/profile/', profile_id=profile_id) 
+
+class PhotoDelete(LoginRequiredMixin, DeleteView):
+  model = Photo
+  success_url = '/profile/'
