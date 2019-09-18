@@ -60,6 +60,15 @@ def parks_detail(request, park_id):
   park = Park.objects.get(id=park_id)
   return render(request, 'parks/detail.html', {'park': park})
 
+@login_required
+def add_game(request, park_id):
+  form = NewGameForm(request.POST)
+  if form.is_valid():
+    new_game = form.save(commit=False)
+    new_game.park_id = park_id
+    new_game.save()
+  return redirect('parks_detail', park_id = park_id)
+
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game

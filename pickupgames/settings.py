@@ -130,9 +130,5 @@ LOGIN_REDIRECT_URL = '/profile/'
 
 LOGOUT_REDIRECT_URL = '/'
 
-<<<<<<< HEAD
 import django_heroku
 django_heroku.settings(locals())
-=======
-EASY_MAPS_CENTER = (-41.3, 32)
->>>>>>> 20d94c62197d6fa3ab9f91acd2bf8030746ebae7
