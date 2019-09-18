@@ -5,6 +5,38 @@
 
 <h1>{{ park.name }}</h1>
 
-{% easy_map '4133 Via Marina Los Angeles, CA 90292' 300 400 %}
+{% easy_map park.address 300 400 %}
+
+<div class="col s6">
+    <form action="{% url 'add_game' park.id %}" method="post">
+      {% csrf_token %}
+      {{ new_game_form.as_p }}
+      <input type="submit" class="btn" value="Add Game">
+    </form>
+    <br>
+    {% if game %}
+      <div class="card-panel teal-text center-align">Here is a list of games</div>
+    {% else %}
+      <div class="card-panel red-text center-align">No games added</div>
+    {% endif %}
+    <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Time</th><th># of Players</th></tr>
+      </thead>
+      <tbody>
+        {% for game in park.game_set.all %}
+          <tr>
+            <td>{{game.date}}</td>
+            <td>{{game.time}}</td>
+            <td>{{game.count}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+
+
 
 {% endblock %}

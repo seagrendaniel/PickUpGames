@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .forms import SignupForm, NewGameForm
 
 
 # Create your models here.
@@ -16,21 +16,25 @@ class Park(models.Model):
     lat = models.DecimalField(max_digits=11, decimal_places=8)
     long = models.DecimalField(max_digits=11, decimal_places=8)
 
+    def __str__(self):
+        return self.name
+
+        def games_planned(self):
+            return self.game_set.all()
+
 class Game(models.Model):
-    park = models.CharField(max_length=100)
+    park = models.ForeignKey(Park, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
     count = models.IntegerField()
     game = models.CharField(max_length=100)
     
-    def __str__(self):
-        return self.park
+    # def __str__(self):
+    #     return self.park
 
     def get_absolute_url(self):
-        return reverse('games_detail', kwargs={'pk': self.id})
+        return reverse('games_detail', kwargs={'int': self.id})
 
-    class Meta:
-        ordering = ['-date']
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
