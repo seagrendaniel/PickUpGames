@@ -1,4 +1,5 @@
 {% load static %}
+{% load easy_maps_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +27,7 @@
                         <li><a href="{% url 'about' %}">About</a></li>
                         {% if user.is_authenticated %}
                         <li>&nbsp;&nbsp;P.U.G's</li>
+                        <li><a href="{% url 'parks_index' %}">Parks</a></li>
                         <li><a href="{% url 'games_index' %}">Games</a></li>
                         <li>Players</li>
                         <li><a href="{% url 'logout' %}"> Log Out</a></li>
