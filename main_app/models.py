@@ -45,7 +45,7 @@ class Photo(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Photo for "    
+        return f"Photo for profile_id: {self.profile_id} @{self.url}"
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):   
