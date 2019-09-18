@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .forms import SignupForm, NewGameForm
 
+
 # Create your models here.
 class Park(models.Model):
     name = models.CharField(max_length=100)
@@ -19,6 +20,7 @@ class Game(models.Model):
     date = models.DateField()
     time = models.TimeField()
     count = models.IntegerField()
+    game = models.CharField(max_length=100)
     
     def __str__(self):
         return self
@@ -36,6 +38,13 @@ class Profile(models.Model):
     location = models.CharField(max_length=50)
     homecourt = models.CharField(max_length=50)
     games = models.ManyToManyField(Game)
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for "    
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):   
