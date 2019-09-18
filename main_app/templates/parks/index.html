@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Park List</h1>
+
+{% for park in parks %}
+<h4>{{ park.name }}</h4>
+<ul>
+    <li>Location: {{ park.address }} {{ park.zipcode }}</li>
+    <li>Schedule: {{ park.schedule }}</li>
+    <li>Number of Courts: {{ park.courts }}</li>
+</ul>
+<a href="{% url 'parks_detail' park.id %}">Details</a>
+
+
+{% endfor %}
+
+{% endblock %}

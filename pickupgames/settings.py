@@ -11,10 +11,15 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+environ.Env()
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+EASY_MAPS_GOOGLE_KEY='AIzaSyDmuWwgG_bkBVpPD0aYKWE89Xeei8rnTbE'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -32,6 +37,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main_app',
+    'easy_maps',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,5 +130,9 @@ LOGIN_REDIRECT_URL = '/profile/'
 
 LOGOUT_REDIRECT_URL = '/'
 
+<<<<<<< HEAD
 import django_heroku
 django_heroku.settings(locals())
+=======
+EASY_MAPS_CENTER = (-41.3, 32)
+>>>>>>> 20d94c62197d6fa3ab9f91acd2bf8030746ebae7

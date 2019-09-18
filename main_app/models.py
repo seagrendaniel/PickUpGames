@@ -9,6 +9,7 @@ from .forms import SignupForm, NewGameForm
 class Park(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
+    zipcode = models.IntegerField()
     courts = models.IntegerField()
     schedule = models.CharField(max_length=250)
     lat = models.DecimalField(max_digits=11, decimal_places=8)

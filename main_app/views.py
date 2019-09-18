@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import SignupForm, NewGameForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Game
+from .models import Game, Park
 
 def home(request):
   return render(request, 'home.html')
@@ -38,6 +38,28 @@ def signup(request):
   }
 
   return render(request, 'registration/signup.html', context)
+
+class ParkCreate(LoginRequiredMixin, CreateView):
+  model = Park
+  fields = ['name', 'address', 'zipcode', 'courts', 'schedule', 'lat', 'long']
+
+class ParkDelete(LoginRequiredMixin, DeleteView):
+  model = Park
+  success_url = '/parks/'
+
+@login_required
+def parks_index(request):
+  parks = Park.objects.all()
+  print(parks)
+  for park in parks:
+    print('park name', park.name)
+  return render(request, 'parks/index.html', {'parks': parks})
+
+@login_required
+def parks_detail(request, park_id):
+  park = Park.objects.get(id=park_id)
+  return render(request, 'parks/detail.html', {'park': park})
+
 
 class GameCreate(LoginRequiredMixin, CreateView):
   model = Game
