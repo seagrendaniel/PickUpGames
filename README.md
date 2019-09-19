@@ -3,7 +3,7 @@
 
 
 ## **INTRODUCTION**
-![alt text](https://i.imgur.com/LwSSttK.jpg)
+![alt text](https://i.imgur.com/o8C5JRH.png)
 
 
 
@@ -18,7 +18,7 @@
 
 
 ## **Solution**
-![alt text](https://i.imgur.com/LwSSttK.jpg)
+![alt text](https://i.imgur.com/BUGwL8w.jpg)
 
 
 
