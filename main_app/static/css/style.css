@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+  
+  main {
+    flex: 1 0 auto;
+    /* background-image: url("https://i.imgur.com/uV2wj4j.jpg") */
+  }
+  
+  footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+  }
+
+  .homepage {
+      display: flex;
+      justify-content: left;
+      font-family: 'Modak', cursive;
+      text-align: left;
+  }
+
+div.home-label {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25vmin;
+    color: #3B2108;
+}
+
+.app-title {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.container {
+    width: 100%;
+    max-width: none;
+}
+
+.background-pug {
+    width: 100%;
+}
+
+nav ul a {
+    color: #3B2108;
+    font-family: 'Modak', cursive;
+    font-size: 22px;
+}
+
+nav .brand-logo {
+    color: #3B2108;
+    font-family: 'Modak', cursive;
+    font-size: 45px;
+}
