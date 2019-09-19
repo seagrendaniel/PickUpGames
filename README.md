@@ -8,13 +8,13 @@
 
 
 ## **TEAM**
-![alt text](https://i.imgur.com/koLgz8h.jpg)
+![alt text](https://i.imgur.com/MygJyyc.jpg)
 
 
 
 
 ## **Problem**
-![alt text](https://i.imgur.com/cyCSOjT.png)
+![alt text](https://i.imgur.com/LoSNcbq.jpg)
 
 
 ## **Solution**
@@ -33,10 +33,10 @@
 # LINKS
 
 
-*git hub link* https://github.com/nbai123/PickUpGames
+[*git hub link*](https://github.com/nbai123/PickUpGames)
 
-*pitch deck link* https://docs.google.com/presentation/d/1uWzLqHEuwEoaMsfE9DB3Ieob1LWd_TW9JjK3GkK9crs/edit#slide=id.p
+[*pitch deck link*](https://docs.google.com/presentation/d/1uWzLqHEuwEoaMsfE9DB3Ieob1LWd_TW9JjK3GkK9crs/edit#slide=id.p)
 
-*trello link* https://trello.com/b/4jZaSAc0/pick-up-games-python-django-project
+[*trello link*](https://trello.com/b/4jZaSAc0/pick-up-games-python-django-project)
 
-*heroku link* https://pick-up-games.herokuapp.com/
+[*heroku link*](https://pick-up-games.herokuapp.com/)
