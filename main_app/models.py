@@ -13,13 +13,12 @@ class Park(models.Model):
     zipcode = models.IntegerField()
     courts = models.IntegerField()
     schedule = models.CharField(max_length=250)
-    lat = models.DecimalField(max_digits=11, decimal_places=8)
-    long = models.DecimalField(max_digits=11, decimal_places=8)
+    image_url = models.CharField(max_length=250)
 
     def __str__(self):
         return self.name
 
-        def games_planned(self):
+    def games_planned(self):
             return self.game_set.all()
 
 class Game(models.Model):
@@ -43,6 +42,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=50)
     homecourt = models.CharField(max_length=50)
     games = models.ManyToManyField(Game)
+    
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)

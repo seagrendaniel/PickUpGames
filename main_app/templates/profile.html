@@ -9,6 +9,9 @@
     <li>Height: {{ user.profile.height }}</li>
     <li>Location: {{ user.profile.location }}</li>
     <li>Homecourt: {{ user.profile.homecourt }}</li>
+    {% for game in user.profile.game.all %}
+    <li>Games: {{ game }}</li>
+    {% endfor %}
     {% for photo in user.profile.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
     <a href="{% url 'delete_photo' photo.id %}">Delete photo</a>
