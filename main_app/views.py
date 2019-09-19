@@ -124,5 +124,5 @@ def add_photo(request, profile_id):
     return redirect('/profile/', profile_id=profile_id) 
 
 class PhotoDelete(LoginRequiredMixin, DeleteView):
-  model = Photo
+  model = Photo 
   success_url = '/profile/'
