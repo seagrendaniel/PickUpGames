@@ -3,16 +3,18 @@ body {
     min-height: 100vh;
     flex-direction: column;
     overflow-y: hidden;
+
   }
   
   main {
     flex: 1 0 auto;
+    background-color: #EAE4D9;
     /* background-image: url("https://i.imgur.com/uV2wj4j.jpg") */
   }
   
   footer.page-footer {
     padding-top: 0;
-    text-align: right;
+    text-align: right; 
   }
 
   .homepage {
@@ -20,6 +22,7 @@ body {
       justify-content: left;
       font-family: 'Modak', cursive;
       text-align: left;
+
   }
 
 div.home-label {
@@ -54,4 +57,51 @@ nav .brand-logo {
     color: #3B2108;
     font-family: 'Modak', cursive;
     font-size: 45px;
+    position: inherit;
+}
+
+.about {
+    margin-left: 20px;
+}
+
+.thug-pug {
+    border-radius: 50%;
+    width: 70px;
+    margin-left: 20px;
+    margin-top: 3px;
+    /* padding-left: 50px; */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Modak', cursive;
+}
+
+.profile-info {
+    font-weight: bolder;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-details {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       margin: 0px 0px 70px 50px;
+}
+
+.profile-img {
+    display: flex;
+    flex-direction: column;
+}
+
+.parks-detail {
+    display: flex;
+    justify-content: space-around;
+}
+
+.park-map {
+    font-weight: 900;
 }

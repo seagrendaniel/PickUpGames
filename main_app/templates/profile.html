@@ -1,29 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>My P.U.G's</h2>
+<h2 class="center-align">{{  user.get_full_name }}</h2>
 
-<ul>
-    <li>Name: {{  user.get_full_name }}</li>
-    <li>Position: {{ user.profile.first_name }}</li>
-    <li>Height: {{ user.profile.height }}</li>
-    <li>Location: {{ user.profile.location }}</li>
-    <li>Homecourt: {{ user.profile.homecourt }}</li>
-    {% for game in user.profile.game.all %}
-    <li>Games: {{ game }}</li>
-    {% endfor %}
+<ul class="left-align profile-info">
+  <div class="profile">
     {% for photo in user.profile.photo_set.all %}
-    <img class="responsive-img card-panel" src="{{photo.url}}">
-    <a href="{% url 'delete_photo' photo.id %}">Delete photo</a>
-  {% empty %}
-    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-  {% endfor %}
-  <form action="{% url 'add_photo' user.profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-    {% csrf_token %}
-    <input type="file" name="photo-file">
-    <br><br>
-    <input type="submit" class="btn" value="Upload Photo">
-  </form>
+    <div class="profile-img">
+
+      <img class="responsive-img card-panel" src="{{photo.url}}" style="padding: inherit;
+        border-radius: 50%;">
+      <a class="center-align" href="{% url 'delete_photo' photo.id %}">Delete photo</a>
+      <form action="{% url 'add_photo' user.profile.id %}" enctype="multipart/form-data" method="POST"
+        class="center-align">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <br><br>
+        <input type="submit" class="btn" value="Upload Photo">
+      </form>
+    </div>
+
+    {% empty %}
+    <div class="teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+    <div class="profile-details">
+      <li>Position: {{ user.profile.position }}</li>
+      <li>Height: {{ user.profile.height }}</li>
+      <li>Location: {{ user.profile.location }}</li>
+      <li>Homecourt: {{ user.profile.homecourt }}</li>
+      {% for game in user.profile.game.all %}
+      <li>Games: {{ game }}</li>
+      {% endfor %}
+
+    </div>
+  </div>
+
+
   </div>
 </ul>
 
