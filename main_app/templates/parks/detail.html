@@ -29,6 +29,10 @@
             <td>{{game.date}}</td>
             <td>{{game.time}}</td>
             <td>{{game.count}}</td>
+            <form action="{% url 'games_detail' game.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn" value="Details">
+            </form>
           </tr>
         {% endfor %}
       </tbody>

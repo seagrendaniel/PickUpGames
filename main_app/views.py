@@ -108,6 +108,16 @@ def games_detail(request, game_id):
   return render(request, 'games/detail.html', { 'game': game })
 
 @login_required
+def join_game(request, profile_id, game_id):
+  Profile.objects.get(id=profile_id).games.add(game_id)
+  return redirect('profile', profile_id=profile_id)
+
+@login_required
+def leave_game(request, profile_id, game_id):
+  Profile.objects.get(id=profile_id).games.remove(game_id)
+  return redirect('profile', profile_id=profile_id)
+
+@login_required
 def add_photo(request, profile_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
