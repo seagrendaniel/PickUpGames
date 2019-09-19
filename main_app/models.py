@@ -33,7 +33,7 @@ class Game(models.Model):
     #     return self.park
 
     def get_absolute_url(self):
-        return reverse('games_detail', kwargs={'int': self.id})
+        return reverse('games_detail', kwargs={'game_id': self.id})
 
 
 class Profile(models.Model):
