@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 ('url', models.CharField(max_length=200)),
                 ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.Profile')),
             ],
-
+        ),
         migrations.AddField(
             model_name='game',
             name='park',

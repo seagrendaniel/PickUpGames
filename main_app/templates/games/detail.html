@@ -17,18 +17,9 @@
       <div class="card-action">
         <a href="{% url 'games_update' game.id %}">Edit</a>
         <a href="{% url 'games_delete' game.id %}">Delete</a>
-        <a href="{% url 'games_create' game.id %}">Create</a>
       </div>
     </div>
 </div>
-
-
-<p>Location: {{ game.location }}</p>
-<p>Date: {{ game.date }}</p>
-<p>Time: {{ game.time }}</p>
-<p>Count: {{ game.count }}</p>
-<button><a href="{% url 'games_update' game.id %}">Edit</a></button>
-<button><a href="{% url 'games_delete' game.id %}">Delete</a></button>
 
 
 {% endblock %}

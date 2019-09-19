@@ -105,7 +105,7 @@ def games_index(request):
 def games_detail(request, game_id):
   game = Game.objects.get(id=game_id)
 
-  return render(request, 'games/details.html', { 'game': game })
+  return render(request, 'games/detail.html', { 'game': game })
 
 @login_required
 def add_photo(request, profile_id):
